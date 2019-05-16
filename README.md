@@ -5,6 +5,8 @@ Generates Inline/Reply keyboards from classes using annotations
 # Requirements
 [Rubenlagus Telegram bots library](https://github.com/rubenlagus/TelegramBots) (For the CallbackQuery model)
 
+Haven't deployed it to maven central yet so you have to download it manually
+
 # Usage
 First you need a class that holds your keyboard template
 ```java
@@ -117,4 +119,4 @@ used on the methods of the callbacks classes
 @IntValueCallback // used on callback methods for Integer values
 ```
 
-### You can find a complete example in the tests
+### You can find a complete example in the [tests](https://github.com/MouamleH/tg-keyboard-generator/tree/master/src/test/java/keyboard)
