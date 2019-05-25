@@ -1,6 +1,5 @@
 package mouamle.processor.classess;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,32 +30,6 @@ public class RegisteredHandler {
                 "instance=" + instance +
                 ", methods=" + methods +
                 '}';
-    }
-
-    public static class MethodKeyPair {
-        private final Method method;
-        private final String methodKey;
-
-        public MethodKeyPair(Method method, String methodKey) {
-            this.method = method;
-            this.methodKey = methodKey;
-        }
-
-        public Method getMethod() {
-            return method;
-        }
-
-        public String getMethodKey() {
-            return methodKey;
-        }
-
-        @Override
-        public String toString() {
-            return "MethodKeyPair{" +
-                    "method=" + method +
-                    ", methodKey='" + methodKey + '\'' +
-                    '}';
-        }
     }
 
 }

@@ -1,9 +1,9 @@
-package keyboard;
+package mouamle.keyboard.bot;
 
-import keyboard.callback.DataCallback;
-import keyboard.model.Data;
 import mouamle.generator.KeyboardGenerator;
 import mouamle.generator.classes.ButtonHolder;
+import mouamle.keyboard.bot.callback.DataCallback;
+import mouamle.keyboard.bot.model.Data;
 import mouamle.processor.KeyboardProcessor;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -19,10 +19,8 @@ import java.util.List;
 
 public class TestBot extends TelegramLongPollingBot {
 
-    private final KeyboardProcessor processor = new KeyboardProcessor();
-
     TestBot() {
-        processor.registerHandler(new DataCallback());
+        KeyboardProcessor.registerHandler(new DataCallback());
     }
 
     @Override
@@ -52,8 +50,7 @@ public class TestBot extends TelegramLongPollingBot {
         } else if (update.hasCallbackQuery()) {
             CallbackQuery query = update.getCallbackQuery();
             try {
-                System.out.println(query.getData());
-                processor.processCallback(query);
+                KeyboardProcessor.processCallback(query);
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -69,4 +66,5 @@ public class TestBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "BOT_TOKEN";
     }
+
 }

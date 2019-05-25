@@ -1,16 +1,13 @@
-package mouamle.generator.annotations.handlers;
+package mouamle.generator.annotation.callbacks;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StringValue {
-
-    String key();
-
-    String[] values();
-
+public @interface ValueCallback {
+    String valueKey() default "*";
 }

@@ -1,4 +1,4 @@
-package mouamle.generator.annotations.handlers;
+package mouamle.generator.annotation.handlers;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,12 +7,10 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ButtonValue {
+public @interface StringValue {
 
-    String key() default "*";
+    String key();
 
-    String text();
-
-    String callbackText();
+    String[] values();
 
 }

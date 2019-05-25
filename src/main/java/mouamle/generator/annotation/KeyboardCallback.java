@@ -1,12 +1,12 @@
-package mouamle.generator.annotations.callbacks;
+package mouamle.generator.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ButtonValueCallback {
-    String valueKey() default "*";
+public @interface KeyboardCallback {
+    String name();
 }

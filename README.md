@@ -5,6 +5,8 @@ Generates Inline/Reply keyboards from classes using annotations
 # Requirements
 [Rubenlagus Telegram bots library](https://github.com/rubenlagus/TelegramBots) (For the CallbackQuery model)
 
+Haven't deployed it to maven central yet so you have to download it manually
+
 # Usage
 First you need a class that holds your keyboard template
 ```java
@@ -21,8 +23,12 @@ public class Data {
 
     @ButtonValue(text = "Click me", callbackText = "Me clicked :D")
     private Object buttonTest;
+
+    @ButtonValue(text = "Click me 2", callbackText = "Me clicked :D", key = "me2")
+    private Object buttonTest2;
     
 }
+
 ```
 
 Then you generate the keyboard by calling `KeyboardGenerator.generateKeyboard` 
@@ -57,29 +63,29 @@ annotated methods to receive the actual Callback object
 
 This is an example of a callback handler for the template class that we provided at the top
 ```java
-@KeyboardCallback
+@KeyboardCallback(name = "dataCallback")
 public class DataCallback {
 
-    @ButtonValueCallback
+    @ValueCallback(valueKey = "me2")
     public void buttonPressed(Callback callback) {
-        System.out.println(callback);
+        System.out.println("me2 button: " + callback);
     }
 
-    @IntValueCallback(valueKey = "Age")
+    @ValueCallback(valueKey = "Age")
     public void ageCallback(Callback callback) {
         System.out.println("Age: " + callback);
     }
 
-    @IntValueCallback
-    public void callback(Callback callback) {
+    @ValueCallback(valueKey = "Color")
+    public void colorCallbacck(Callback callback) {
+        System.out.println("Color: " + callback);
+    }
+
+    @ValueCallback
+    public void stringCallback(Callback callback) {
         System.out.println("All: " + callback);
     }
-
-    @StringValueCallback
-    public void stringCallback(Callback callback) {
-        System.out.println("All Strings: " + callback);
-    }
-
+    
 }
 
 ```
@@ -112,9 +118,68 @@ used on the fields oof the keyboard template
 ## Available callback method annotations
 used on the methods of the callbacks classes
 ```java
-@ButtonValueCallback // used on callback methods for buttons
-@StringValueCallback // used on callback methods for String values
-@IntValueCallback // used on callback methods for Integer values
+// used on callback methods
+@ValueCallback(
+        valueKey = "Used for linking this callback to a value annotation"
+        )
 ```
 
-### You can find a complete example in the tests
+# Registering your own annotation
+First you need the Annotation itself 
+
+Then you need a class that implements `AnnotationHandler<A>` taking the Annotation as a type 
+
+Here i'm using @IntValue as an example
+
+The Annotation
+```java
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface IntValue {
+    String key();
+
+    int increment() default 1;
+    int decrement() default 1;
+}
+```
+
+The handler for the IntValue 
+
+When setting the callbackData of the button you need to follow the same template<br>
+\<Annotation name\>;\<Field name\>;\<The value key to be matched with the @ValueCallback valueKey\>;\<The data value you want te receive\>
+```java
+public class IntValueHandler implements AnnotationHandler<IntValue> {
+
+    @Override
+    public List<List<ButtonHolder>> generate(IntValue intValue, Object o, Field field) throws Exception {
+        String valueKey = intValue.key();
+
+        List<List<ButtonHolder>> part = new ArrayList<>();
+        addValueHeader(valueKey, part);
+
+        List<ButtonHolder> row = new ArrayList<>();
+
+        String decrementData = String.format("IntValue;%s;%s;-%s", field.getName(), valueKey, intValue.decrement());
+        String incrementData = String.format("IntValue;%s;%s;+%s", field.getName(), valueKey, intValue.increment());
+
+        row.add(new ButtonHolder("-", decrementData));
+        row.add(new ButtonHolder(String.valueOf(field.getInt(o)), noData));
+        row.add(new ButtonHolder("+", incrementData));
+
+        part.add(row);
+
+        return part;
+    }
+}
+```
+
+After doing so you need to register the Annotation alongside its handler in the AnnotationsRegistry like so
+```java
+AnnotationsRegistry.registerAnnotation(IntValue.class.getName(), new IntValueHandler());
+```
+
+# Contribution
+Feel free to submit a pr if you add a new functionality or new Annotations
+
+
+### You can find a complete example in the [tests](https://github.com/MouamleH/tg-keyboard-generator/tree/master/src/test/java/keyboard)
