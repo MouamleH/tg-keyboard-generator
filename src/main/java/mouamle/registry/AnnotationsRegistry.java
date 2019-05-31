@@ -54,7 +54,7 @@ public final class AnnotationsRegistry {
      * @param name the name of the registered Annotation class name
      * @return true if there was a handler registered <br> false otherwise
      */
-    public static boolean isHandlerPreseent(String name) {
+    public static boolean isHandlerPresent(String name) {
         return handlersMap.containsKey(name);
     }
 
