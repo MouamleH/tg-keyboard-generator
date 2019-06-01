@@ -111,7 +111,8 @@ used on the fields oof the keyboard template
 // used for String type fields
 @StringValue(
         key = "the name to be displayed and the value accessed by the callback",
-        values = {"An array containing the possible values for this field"}
+        values = {"An array containing the possible values for this field"},
+        orientation = "The orientation of the text StringValue.Horizontal or StringValue.Vertical" 
         )
 ```
 
