@@ -9,7 +9,7 @@ public class Data {
     @IntValue(key = "Age")
     private int age;
 
-    @StringValue(key = "Color", values = {"r", "g", "b", "a"})
+    @StringValue(key = "Color", values = {"r", "g", "b", "a"}, orientation = StringValue.Vertical)
     private String color;
 
     @IntValue(key = "Size")

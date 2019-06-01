@@ -9,8 +9,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface StringValue {
 
+    int Horizontal = 0;
+    int Vertical = 1;
+
     String key();
 
     String[] values();
+
+    int orientation() default Horizontal;
 
 }
