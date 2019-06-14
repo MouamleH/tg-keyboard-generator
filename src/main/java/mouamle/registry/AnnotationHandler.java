@@ -23,7 +23,7 @@ public interface AnnotationHandler<A> {
     List<List<ButtonHolder>> generate(A annotation, Object o, Field field) throws Exception;
 
     default void addValueHeader(String valueKey, List<List<ButtonHolder>> part) {
-        part.add(Collections.singletonList(new ButtonHolder(valueKey, noData)));
+        part.add(Collections.singletonList(new ButtonHolder("-=" + valueKey + "=-", noData)));
     }
 
 }

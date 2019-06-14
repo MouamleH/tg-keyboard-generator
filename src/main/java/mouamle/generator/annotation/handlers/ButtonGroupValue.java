@@ -7,17 +7,17 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StringValue {
+public @interface ButtonGroupValue {
 
     int Horizontal = 0;
     int Vertical = 1;
 
-    String key();
+    String key() default "*";
 
-    String[] values();
+    String[] texts();
+
+    String[] callbacks();
 
     int orientation() default Horizontal;
-
-    boolean addHeader() default true;
 
 }

@@ -15,5 +15,6 @@ public @interface IntValue {
 
     int decrement() default 1;
 
-
+    boolean addHeader() default true;
+    
 }

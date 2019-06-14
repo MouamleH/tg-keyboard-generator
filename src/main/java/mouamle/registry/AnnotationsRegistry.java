@@ -20,6 +20,7 @@ public final class AnnotationsRegistry {
         registerAnnotation(IntValue.class.getName(), new IntValueHandler());
         registerAnnotation(StringValue.class.getName(), new StringValueHandler());
         registerAnnotation(ButtonValue.class.getName(), new ButtonValueHandler());
+        registerAnnotation(ButtonGroupValue.class.getName(), new ButtonGroupValueHandler());
     }
 
     /**

@@ -14,7 +14,9 @@ public class IntValueHandler implements AnnotationHandler<IntValue> {
         String valueKey = intValue.key();
 
         List<List<ButtonHolder>> part = new ArrayList<>();
-        addValueHeader(valueKey, part);
+        if (intValue.addHeader()) {
+            addValueHeader(valueKey, part);
+        }
 
         List<ButtonHolder> row = new ArrayList<>();
 

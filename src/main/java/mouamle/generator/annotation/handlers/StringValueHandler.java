@@ -15,7 +15,9 @@ public class StringValueHandler implements AnnotationHandler<StringValue> {
         String valueKey = stringValue.key();
 
         List<List<ButtonHolder>> part = new ArrayList<>();
-        addValueHeader(valueKey, part);
+        if (stringValue.addHeader()) {
+            addValueHeader(valueKey, part);
+        }
 
         switch (stringValue.orientation()) {
             case StringValue.Horizontal:

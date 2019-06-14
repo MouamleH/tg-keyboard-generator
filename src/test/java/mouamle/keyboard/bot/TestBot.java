@@ -3,7 +3,10 @@ package mouamle.keyboard.bot;
 import mouamle.generator.KeyboardGenerator;
 import mouamle.generator.classes.ButtonHolder;
 import mouamle.keyboard.bot.callback.DataCallback;
+import mouamle.keyboard.bot.model.ButtonGroup;
 import mouamle.keyboard.bot.model.Data;
+import mouamle.keyboard.bot.model.NumPad;
+import mouamle.keyboard.bot.model.PageData;
 import mouamle.processor.KeyboardProcessor;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -29,21 +32,18 @@ public class TestBot extends TelegramLongPollingBot {
             Message message = update.getMessage();
             try {
                 SendMessage send = new SendMessage(message.getChatId(), "Hello?");
-
-                List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-
-                List<List<ButtonHolder>> buttons = KeyboardGenerator.getInstance().generateKeyboard(new Data());
-                for (List<ButtonHolder> button : buttons) {
-                    List<InlineKeyboardButton> row = new ArrayList<>();
-                    for (ButtonHolder holder : button) {
-                        row.add(new InlineKeyboardButton(holder.getText()).setCallbackData(holder.getData()));
-                    }
-                    keyboard.add(row);
-                }
-
-                send.setReplyMarkup(new InlineKeyboardMarkup().setKeyboard(keyboard));
-
+                send.setReplyMarkup(generateMarkup(new Data()));
                 execute(send);
+
+                send.setReplyMarkup(generateMarkup(new NumPad()));
+                execute(send);
+
+                send.setReplyMarkup(generateMarkup(new PageData()));
+                execute(send);
+
+                send.setReplyMarkup(generateMarkup(new ButtonGroup()));
+                execute(send);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -55,6 +55,21 @@ public class TestBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
+    }
+
+    private InlineKeyboardMarkup generateMarkup(Object object) throws Exception {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<List<ButtonHolder>> buttons = KeyboardGenerator.getInstance().generateKeyboard(object);
+        for (List<ButtonHolder> button : buttons) {
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            for (ButtonHolder holder : button) {
+                row.add(new InlineKeyboardButton(holder.getText()).setCallbackData(holder.getData()));
+            }
+            keyboard.add(row);
+        }
+
+        return new InlineKeyboardMarkup().setKeyboard(keyboard);
     }
 
     @Override
