@@ -105,14 +105,24 @@ used on the fields oof the keyboard template
 @IntValue(
         key = "the name to be displayed and the value accessed by the callback", 
         increment = "an integer representing the value of increment to the integer",
-        decrement = "an integer representing the value of decrement to the integer"
+        decrement = "an integer representing the value of decrement to the integer",
+        addHeader = "true if you want a header to be displayed, otherwise false"
         )
 
 // used for String type fields
 @StringValue(
         key = "the name to be displayed and the value accessed by the callback",
         values = {"An array containing the possible values for this field"},
-        orientation = "The orientation of the text StringValue.Horizontal or StringValue.Vertical" 
+        orientation = "The orientation of the text StringValue.Horizontal or StringValue.Vertical", 
+        addHeader = "true if you want a header to be displayed, otherwise false"
+        )
+        
+// used for list of buttons
+@ButtonGroupValue(
+        key = "The value accessed by the callback",
+        texts = {"An array containing the buttons texts"},
+        callbacks = {"An array containing the callbacks for each text"}, // length must match texts[] length
+        orientation = "The orientation of the text ButtonGroupValue.Horizontal or ButtonGroupValue.Vertical"
         )
 ```
 
