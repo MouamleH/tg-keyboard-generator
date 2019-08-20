@@ -1,5 +1,6 @@
-package mouamle.generator.annotation.handlers;
+package mouamle.generator.annotation.handlers.handler;
 
+import mouamle.generator.annotation.handlers.value.ButtonGroupValue;
 import mouamle.generator.classes.ButtonHolder;
 import mouamle.registry.AnnotationHandler;
 
@@ -18,6 +19,10 @@ public class ButtonGroupValueHandler implements AnnotationHandler<ButtonGroupVal
 
         String[] texts = buttonGroup.texts();
         String[] callbacks = buttonGroup.callbacks();
+
+        if (!buttonGroup.header().isEmpty()) {
+            addValueHeader(buttonGroup.header(), part);
+        }
 
         List<ButtonHolder> row = new ArrayList<>();
 

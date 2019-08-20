@@ -1,4 +1,4 @@
-package mouamle.generator.annotation.handlers;
+package mouamle.generator.annotation.handlers.value;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,17 +7,16 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ButtonGroupValue {
+public @interface ListValue {
 
     int Horizontal = 0;
     int Vertical = 1;
 
     String key() default "*";
 
-    String[] texts();
+    String header() default "";
 
-    String[] callbacks();
-
-    int orientation() default Horizontal;
+    int orientation() default Vertical;
 
 }
+

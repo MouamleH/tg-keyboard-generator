@@ -1,5 +1,6 @@
-package mouamle.generator.annotation.handlers;
+package mouamle.generator.annotation.handlers.handler;
 
+import mouamle.generator.annotation.handlers.value.IntValue;
 import mouamle.registry.AnnotationHandler;
 import mouamle.generator.classes.ButtonHolder;
 
@@ -14,8 +15,8 @@ public class IntValueHandler implements AnnotationHandler<IntValue> {
         String valueKey = intValue.key();
 
         List<List<ButtonHolder>> part = new ArrayList<>();
-        if (intValue.addHeader()) {
-            addValueHeader(valueKey, part);
+        if (!intValue.header().isEmpty()) {
+            addValueHeader(intValue.header(), part);
         }
 
         List<ButtonHolder> row = new ArrayList<>();

@@ -3,10 +3,7 @@ package mouamle.keyboard.bot;
 import mouamle.generator.KeyboardGenerator;
 import mouamle.generator.classes.ButtonHolder;
 import mouamle.keyboard.bot.callback.DataCallback;
-import mouamle.keyboard.bot.model.ButtonGroup;
-import mouamle.keyboard.bot.model.Data;
-import mouamle.keyboard.bot.model.NumPad;
-import mouamle.keyboard.bot.model.PageData;
+import mouamle.keyboard.bot.model.single.*;
 import mouamle.processor.KeyboardProcessor;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -32,16 +29,23 @@ public class TestBot extends TelegramLongPollingBot {
             Message message = update.getMessage();
             try {
                 SendMessage send = new SendMessage(message.getChatId(), "Hello?");
-                send.setReplyMarkup(generateMarkup(new Data()));
+
+                send.setReplyMarkup(generateMarkup(new StringValueModel()));
                 execute(send);
 
-                send.setReplyMarkup(generateMarkup(new NumPad()));
+                send.setReplyMarkup(generateMarkup(new IntValueModel()));
                 execute(send);
 
-                send.setReplyMarkup(generateMarkup(new PageData()));
+                send.setReplyMarkup(generateMarkup(new ButtonValueModel()));
                 execute(send);
 
-                send.setReplyMarkup(generateMarkup(new ButtonGroup()));
+                send.setReplyMarkup(generateMarkup(new ButtonGroupValueModel()));
+                execute(send);
+
+                send.setReplyMarkup(generateMarkup(new ListValueModel()));
+                execute(send);
+
+                send.setReplyMarkup(generateMarkup(new MapValueModel()));
                 execute(send);
 
             } catch (Exception e) {
@@ -50,7 +54,10 @@ public class TestBot extends TelegramLongPollingBot {
         } else if (update.hasCallbackQuery()) {
             CallbackQuery query = update.getCallbackQuery();
             try {
-                KeyboardProcessor.processCallback(query);
+                boolean processed = KeyboardProcessor.processCallback(query);
+                if (!processed) {
+                    // Carry on with custom processing
+                }
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }

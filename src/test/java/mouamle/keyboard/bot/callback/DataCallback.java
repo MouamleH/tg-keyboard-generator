@@ -18,7 +18,7 @@ public class DataCallback {
     }
 
     @ValueCallback(valueKey = "Color")
-    public void colorCallbacck(Callback callback) {
+    public void colorCallback(Callback callback) {
         System.out.println("Color: " + callback);
     }
 

@@ -62,6 +62,10 @@ public class KeyboardProcessor {
      * @throws IllegalArgumentException  if the callbackQuery had no data
      */
     public static boolean processCallback(CallbackQuery callbackQuery) throws InvocationTargetException, IllegalAccessException {
+        if (callbackQuery == null) {
+            throw new IllegalArgumentException("CallbackQuery can't be null");
+        }
+
         if (callbackQuery.getData() == null || callbackQuery.getData().trim().isEmpty()) {
             throw new IllegalArgumentException("CallbackQuery must have data in it");
         }

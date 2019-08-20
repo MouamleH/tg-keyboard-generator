@@ -1,5 +1,6 @@
-package mouamle.generator.annotation.handlers;
+package mouamle.generator.annotation.handlers.handler;
 
+import mouamle.generator.annotation.handlers.value.StringValue;
 import mouamle.generator.classes.ButtonHolder;
 import mouamle.registry.AnnotationHandler;
 
@@ -15,8 +16,8 @@ public class StringValueHandler implements AnnotationHandler<StringValue> {
         String valueKey = stringValue.key();
 
         List<List<ButtonHolder>> part = new ArrayList<>();
-        if (stringValue.addHeader()) {
-            addValueHeader(valueKey, part);
+        if (!stringValue.header().isEmpty()) {
+            addValueHeader(stringValue.header(), part);
         }
 
         switch (stringValue.orientation()) {

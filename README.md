@@ -1,4 +1,4 @@
-# Tg Keyboard Generator
+# TG Keyboard Generator
 
 Generates Inline/Reply keyboards from classes using annotations
 
@@ -92,7 +92,7 @@ public class DataCallback {
 
 
 ## Available Field annotations
-used on the fields oof the keyboard template
+used on the fields of the keyboard template
 ```java
 // used for a normal button with a callback
 @ButtonValue(
@@ -126,7 +126,12 @@ used on the fields oof the keyboard template
         )
 ```
 
+Read more in the [wiki](https://github.com/MouamleH/tg-keyboard-generator/wiki)
+
+
+
 ## Available callback method annotations
+
 used on the methods of the callbacks classes
 ```java
 // used on callback methods
@@ -140,7 +145,7 @@ First you need the Annotation itself
 
 Then you need a class that implements `AnnotationHandler<A>` taking the Annotation as a type 
 
-Here i'm using @IntValue as an example
+Here I'm using @IntValue as an example
 
 The Annotation
 ```java
@@ -157,7 +162,8 @@ public @interface IntValue {
 The handler for the IntValue 
 
 When setting the callbackData of the button you need to follow the same template<br>
-\<Annotation name\>;\<Field name\>;\<The value key to be matched with the @ValueCallback valueKey\>;\<The data value you want te receive\>
+\<Annotation name\>;\<Field name\>;\<The value key to be matched with the @ValueCallback valueKey\>;\<The data value you want to receive\>
+
 ```java
 public class IntValueHandler implements AnnotationHandler<IntValue> {
 
@@ -190,7 +196,7 @@ AnnotationsRegistry.registerAnnotation(IntValue.class.getName(), new IntValueHan
 ```
 
 # Contribution
-Feel free to submit a pr if you add a new functionality or new Annotations
+Feel free to submit a PR if you add a new functionality or new Annotations
 
 
 ### You can find a complete example in the [tests](https://github.com/MouamleH/tg-keyboard-generator/tree/master/src/test/java/keyboard)

@@ -1,8 +1,8 @@
 package mouamle.keyboard.bot.model;
 
-import mouamle.generator.annotation.handlers.ButtonValue;
-import mouamle.generator.annotation.handlers.IntValue;
-import mouamle.generator.annotation.handlers.StringValue;
+import mouamle.generator.annotation.handlers.value.ButtonValue;
+import mouamle.generator.annotation.handlers.value.IntValue;
+import mouamle.generator.annotation.handlers.value.StringValue;
 
 public class Data {
 

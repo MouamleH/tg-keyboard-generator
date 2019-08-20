@@ -1,5 +1,6 @@
-package mouamle.generator.annotation.handlers;
+package mouamle.generator.annotation.handlers.handler;
 
+import mouamle.generator.annotation.handlers.value.ButtonValue;
 import mouamle.registry.AnnotationHandler;
 import mouamle.generator.classes.ButtonHolder;
 

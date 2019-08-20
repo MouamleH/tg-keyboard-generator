@@ -1,6 +1,6 @@
 package mouamle.keyboard.bot.model;
 
-import mouamle.generator.annotation.handlers.ButtonGroupValue;
+import mouamle.generator.annotation.handlers.value.ButtonGroupValue;
 
 public class ButtonGroup {
 

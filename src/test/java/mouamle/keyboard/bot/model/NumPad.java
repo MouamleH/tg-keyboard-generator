@@ -1,6 +1,6 @@
 package mouamle.keyboard.bot.model;
 
-import mouamle.generator.annotation.handlers.StringValue;
+import mouamle.generator.annotation.handlers.value.StringValue;
 
 public class NumPad {
 

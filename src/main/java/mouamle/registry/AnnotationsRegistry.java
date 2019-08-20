@@ -1,6 +1,7 @@
 package mouamle.registry;
 
-import mouamle.generator.annotation.handlers.*;
+import mouamle.generator.annotation.handlers.handler.*;
+import mouamle.generator.annotation.handlers.value.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,8 @@ public final class AnnotationsRegistry {
         registerAnnotation(StringValue.class.getName(), new StringValueHandler());
         registerAnnotation(ButtonValue.class.getName(), new ButtonValueHandler());
         registerAnnotation(ButtonGroupValue.class.getName(), new ButtonGroupValueHandler());
+        registerAnnotation(ListValue.class.getName(), new ListValueHandler());
+        registerAnnotation(MapValue.class.getName(), new MapValueHandler());
     }
 
     /**

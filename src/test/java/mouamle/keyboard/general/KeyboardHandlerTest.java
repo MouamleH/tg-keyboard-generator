@@ -3,6 +3,7 @@ package mouamle.keyboard.general;
 import mouamle.generator.KeyboardGenerator;
 import mouamle.generator.classes.ButtonHolder;
 import mouamle.keyboard.bot.model.Data;
+import mouamle.keyboard.bot.model.ListAndMap;
 import org.junit.Test;
 
 import java.io.File;
@@ -21,6 +22,18 @@ public class KeyboardHandlerTest {
     @Test
     public void generatorTest() throws Exception {
         List<List<ButtonHolder>> keyboard = KeyboardGenerator.getInstance().generateKeyboard(new Data());
+
+        for (List<ButtonHolder> buttonHolders : keyboard) {
+            for (ButtonHolder buttonHolder : buttonHolders) {
+                System.out.print(buttonHolder + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void listAndMapTest() throws Exception {
+        List<List<ButtonHolder>> keyboard = KeyboardGenerator.getInstance().generateKeyboard(new ListAndMap());
 
         for (List<ButtonHolder> buttonHolders : keyboard) {
             for (ButtonHolder buttonHolder : buttonHolders) {
