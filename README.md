@@ -5,7 +5,8 @@ Generates Inline/Reply keyboards from classes using annotations
 # Requirements
 [Rubenlagus Telegram bots library](https://github.com/rubenlagus/TelegramBots) (For the CallbackQuery model)
 
-Haven't deployed it to maven central yet so you have to download it manually
+# installation
+[From GitHub Package Registry](https://github.com/MouamleH/tg-keyboard-generator/packages)
 
 # Usage
 First you need a class that holds your keyboard template
