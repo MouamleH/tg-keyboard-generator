@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d5d2f57503aa41f6b89d8901aeb093e4)](https://www.codacy.com/manual/MouamleH/tg-keyboard-generator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MouamleH/tg-keyboard-generator&amp;utm_campaign=Badge_Grade)
+
 # TG Keyboard Generator
 
 Generates Inline/Reply keyboards from classes using annotations
