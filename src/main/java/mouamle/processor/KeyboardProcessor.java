@@ -89,7 +89,7 @@ public class KeyboardProcessor {
                     String key = keyPair.getMethodKey();
                     Method method = keyPair.getMethod();
 
-                    if (key.equals("*") || key.equals(valueKey)) {
+                    if ("*".equals(key) || key.equals(valueKey)) {
                         method.invoke(handler.getInstance(), callback);
                     }
                 }

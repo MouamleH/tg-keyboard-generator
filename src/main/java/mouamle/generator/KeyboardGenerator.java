@@ -23,7 +23,6 @@ import java.util.Optional;
 @SuppressWarnings("unchecked")
 public class KeyboardGenerator {
 
-    private static final String noData = "*";
     private List<List<ButtonHolder>> keyboard = new ArrayList<>();
 
     private static KeyboardGenerator instance = new KeyboardGenerator();
