@@ -203,4 +203,4 @@ AnnotationsRegistry.registerAnnotation(IntValue.class.getName(), new IntValueHan
 Feel free to submit a PR if you add a new functionality or new Annotations
 
 
-### You can find a complete example in the [tests](https://github.com/MouamleH/tg-keyboard-generator/tree/master/src/test/java/keyboard)
+### You can find a complete example in the [tests](https://github.com/MouamleH/tg-keyboard-generator/tree/master/src/test/java/mouamle/keyboard)
