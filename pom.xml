@@ -6,7 +6,7 @@
 
     <groupId>com.github.mouamle</groupId>
     <artifactId>tg-keyboard-generator</artifactId>
-    <version>2.2.1-beta</version>
+    <version>2.2.2-beta</version>
     <packaging>jar</packaging>
 
     <name>Tg Keyboard Generator</name>
