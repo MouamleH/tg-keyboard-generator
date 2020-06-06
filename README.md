@@ -11,7 +11,7 @@ Generates Inline/Reply keyboards from classes using annotations
 # installation
 [From GitHub Package Registry](https://github.com/MouamleH/tg-keyboard-generator/packages)
 
-[From jitpack](https://jitpack.io/#MouamleH/tg-keyboard-generator)
+[From jitpack](https://jitpack.io/#MouamleH/tg-keyboard-generator/2.2.2-beta)
 
 [Manually add the jar](https://github.com/MouamleH/tg-keyboard-generator/blob/master/dist/tg-keyboard-generator-2.2-beta.jar)
 
